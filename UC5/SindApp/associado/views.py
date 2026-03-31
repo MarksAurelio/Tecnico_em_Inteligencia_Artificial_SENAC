@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from associado.models import Associado, Empresa
 
 def index(request):
     # criar dados mock do associado: ID, nome, status, (ativo/inativo)
@@ -35,3 +37,7 @@ def beneficios(request):
 
 def carteirinha(request):
     return render(request, 'associado/carteirinha.html')
+
+def empresa(request):
+    empresa = Empresa.objects.all()
+    return render(request, 'associado/empresa.html', {'empre':empresa})
